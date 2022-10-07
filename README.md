@@ -65,6 +65,13 @@ detailed usage can be found at:
 
 http://www.unibia.net/crypto-faucet
 
+Docker
+------
+
+A `docker-compose.yml` file is provided with an appropriate database service provided. Dash Core is expected
+to be available on the host system. Configure settings by renaming `.env.example` to `.env` and modifying as
+necessary. Then run `docker compose up -d`. The faucet should be available at `localhost`.
+
 Restrictions
 ------------
 

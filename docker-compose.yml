@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=multifaucet
+      - MYSQL_DATABASE=multifaucet
+      - MYSQL_USER=multifaucet
+      - MYSQL_PASSWORD=multifaucet
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - mysql:/var/lib/mysql
+
+  multifaucet:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./config/faucet:/var/www/html/config:ro
+      - ./config/php:/usr/local/etc/php:ro
+    ports:
+      - 80:80
+
+volumes:
+  mysql:
