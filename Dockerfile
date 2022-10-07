@@ -8,4 +8,6 @@ RUN sed -i '/deb http:\/\/deb.debian.org\/debian stretch-updates main/d' /etc/ap
   && apt-get remove -y libpng-dev libjpeg-dev libfreetype6-dev \
   && rm -fr /var/cache/apt/*
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 COPY . /var/www/html
