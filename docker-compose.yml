@@ -20,7 +20,7 @@ services:
       - .env
     volumes:
       - ./config/faucet:/var/www/html/config:ro
-      - ./config/php:/usr/local/etc/php:ro
+      - ./config/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
     ports:
       - 80:80
 
