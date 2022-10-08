@@ -23,6 +23,8 @@ services:
       - ./config/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
     ports:
       - 80:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   mysql:
