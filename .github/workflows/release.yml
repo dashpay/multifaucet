@@ -40,7 +40,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const fullTag = '${{context.payload.release.tag_name}}';
+            const fullTag = context.payload.release.tag_name;
             if (fullTag.includes('-')) {
               const [, fullSuffix] = fullTag.split('-');
               const [suffix] = fullSuffix.split('.');
