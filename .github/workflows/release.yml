@@ -1,7 +1,6 @@
 name: Release
 
 on:
-  workflow_dispatch:
   release:
     types:
       - published
@@ -35,20 +34,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Get tag
-        uses: actions/github-script@v6
-        id: tag
-        with:
-          result-encoding: string
-          script: "return context.eventName === 'workflow_dispatch' ? core.getInput('tag') : context.payload.release.tag_name;"
-
       - name: Set suffix
         uses: actions/github-script@v6
         id: suffix
         with:
           result-encoding: string
           script: |
-            const fullTag = '${{steps.tag.outputs.result}}';
+            const fullTag = '${{context.payload.release.tag_name}}';
             if (fullTag.includes('-')) {
               const [, fullSuffix] = fullTag.split('-');
               const [suffix] = fullSuffix.split('.');
@@ -63,10 +55,10 @@ jobs:
         with:
           images: dashpay/multifaucet
           tags: |
-            type=match,pattern=v(\d+),group=1,value=${{steps.tag.outputs.result}}
-            type=match,pattern=v(\d+.\d+),group=1,value=${{steps.tag.outputs.result}}
-            type=match,pattern=v(\d+.\d+.\d+),group=1,value=${{steps.tag.outputs.result}}
-            type=match,pattern=v(.*),group=1,value=${{steps.tag.outputs.result}},suffix=
+            type=match,pattern=v(\d+),group=1,value=${{context.payload.release.tag_name}}
+            type=match,pattern=v(\d+.\d+),group=1,value=${{context.payload.release.tag_name}}
+            type=match,pattern=v(\d+.\d+.\d+),group=1,value=${{context.payload.release.tag_name}}
+            type=match,pattern=v(.*),group=1,value=${{context.payload.release.tag_name}},suffix=
           flavor: |
             suffix=${{ steps.suffix.outputs.result }},onlatest=true
             latest=${{ github.event_name == 'release' }}
