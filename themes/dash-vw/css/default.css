@@ -172,7 +172,7 @@ p.big{
 
 img.droplet{
 	position: absolute;
-	right: 1em;
+	right: 0px;
 	top: 0%;
 	max-width: 300px;
 	width: 30%;
@@ -186,6 +186,7 @@ img.droplet:nth-of-type(2){
 	-webkit-animation-name: much_coins2;
 	animation-delay: 2s;
 	animation-name: much_coins2;
+	right: 100px;
 }
 
 img.droplet:nth-of-type(3){
@@ -193,6 +194,15 @@ img.droplet:nth-of-type(3){
 	-webkit-animation-name: much_coins3;
 	animation-delay: 4s;
 	animation-name: much_coins3;
+	right: 50px;
+}
+
+img.droplet:nth-of-type(4){
+	-webkit-animation-delay: 5s;
+	-webkit-animation-name: much_coins4;
+	animation-delay: 5s;
+	animation-name: much_coins4;
+	right: 120px;
 }
 
 @keyframes much_coins{
@@ -231,6 +241,18 @@ img.droplet:nth-of-type(3){
 	}
 }
 
+@keyframes much_coins4{
+	from{
+		top: 0%;
+		margin-top: -40%;
+	}
+	to{
+		top: 100%;
+		margin-top: 0%;
+		transform: rotate(-30deg);
+	}
+}
+
 @-webkit-keyframes much_coins{
 	from{
 		top: 0%;
@@ -264,6 +286,18 @@ img.droplet:nth-of-type(3){
 		top: 100%;
 		margin-top: 0%;
 		-webkit-transform: rotate(90deg);
+	}
+}
+
+@-webkit-keyframes much_coins4{
+	from{
+		top: 0%;
+		margin-top: -40%;
+	}
+	to{
+		top: 100%;
+		margin-top: 0%;
+		-webkit-transform: rotate(-30deg);
 	}
 }
 
