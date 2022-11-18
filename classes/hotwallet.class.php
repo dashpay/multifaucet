@@ -6,8 +6,8 @@ class HotWallet implements Wallet {
 	private $RPC;
 	private $ENCRYPTION_PASSWORD;
 
-	public function __construct($username, $password, $hostname, $port, $encrypt_pass = "", $protocol = 'http'){
-		$this->RPC = new jsonRPCClient($protocol . '://' .urlencode($username).':'.urlencode($password).'@'.urlencode($hostname).':'.urlencode($port));
+	public function __construct($username, $password, $hostname, $port, $encrypt_pass = "", $wallet, $protocol = 'http'){
+		$this->RPC = new jsonRPCClient($protocol . '://' .urlencode($username).':'.urlencode($password).'@'.urlencode($hostname).':'.urlencode($port).'/wallet/'.urlencode($wallet));
 		$this->ENCRYPTION_PASSWORD = $encrypt_pass;
 	}
 
