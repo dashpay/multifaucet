@@ -47,8 +47,6 @@ class HotWallet implements Wallet {
 
 	protected function rpc_call($method, $params = array()) {
 		if(!empty($this->RPC)){
-			// echo 'trying RPC';
-			// print_r($method);
 			return @$this->RPC->__call($method, $params);
 		}
 		else {
