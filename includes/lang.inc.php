@@ -1,5 +1,5 @@
 <?php
-$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$lang = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : '';
 
 //FB::log("Detected Language: " . $lang);
 
