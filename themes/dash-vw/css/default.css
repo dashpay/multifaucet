@@ -12,9 +12,9 @@ html,body{
 body{
 	background: url(../images/1471045076.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 
 	font-size: 62.5%;
 	font-family: 'Verdana','Arial',sans-serif;
