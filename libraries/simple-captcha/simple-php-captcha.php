@@ -65,7 +65,7 @@ function simple_php_captcha($config = array()) {
 	if( $captcha_config['max_font_size'] < $captcha_config['min_font_size'] ) $captcha_config['max_font_size'] = $captcha_config['min_font_size'];
 	
 	// Use milliseconds instead of seconds
-	srand(microtime() * 100);
+	srand(microtime(1) * 100);
 	
 	// Generate CAPTCHA code if not set by user
 	if( empty($captcha_config['code']) ) {
@@ -132,7 +132,7 @@ if( isset($_GET['_CAPTCHA']) ) {
 	unset($_SESSION['_CAPTCHA']);
 	
 	// Use milliseconds instead of seconds
-	srand(microtime() * 100);
+	srand(microtime(1) * 100);
 	
 	// Pick random background, get info, and start captcha
 	$background = $captcha_config['backgrounds'][rand(0, count($captcha_config['backgrounds']) -1)];
