@@ -142,6 +142,10 @@ function faucet_eval_status($status, &$vars, $LANGUAGE, $SETTINGS){
 			break;
 
 		case SF_STATUS_RPC_CONNECTION_FAILED:
+			$vars['status_message'] = $LANGUAGE['rpc_connect_error'];
+			$show_form = false;
+			break;
+
 		case SF_STATUS_MYSQL_CONNECTION_FAILED:
 			$vars['status_message'] = $LANGUAGE['faucet_connect_error'];
 			$show_form = false;

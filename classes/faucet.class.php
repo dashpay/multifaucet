@@ -62,12 +62,17 @@ class Faucet {
 
 		// Check database and Balance
 		// TODO: Tell the diffrence between a DB and WALLET connection error
-		if (!$this->DB->connect_error && $this->refresh_balance()){
-			if ($this->balance >= $this->SETTINGS->config["payout_threshold"]) {
-				$this->status = SF_STATUS_OPERATIONAL;
-			}
+		if (!$this->DB->connect_error){
+			if ($this->refresh_balance()) {
+				if ($this->balance >= $this->SETTINGS->config["payout_threshold"]) {
+					$this->status = SF_STATUS_OPERATIONAL;
+				}
+				else {
+					$this->status = SF_STATUS_DRY_FAUCET;
+				}
+		  }
 			else {
-				$this->status = SF_STATUS_DRY_FAUCET;
+				$this->status = SF_STATUS_RPC_CONNECTION_FAILED;
 			}
 		}
 		else{
