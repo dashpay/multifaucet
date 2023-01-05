@@ -47,7 +47,7 @@ function faucet_get_captcha($SETTINGS){
 		}
 	}
 	else{
-		return ''; //Emtpy
+		return ''; //Empty
 	}
 }
 
@@ -57,7 +57,7 @@ function faucet_valid_captcha($SETTINGS, $remote_address, $captcha_data = array(
 		if ($SETTINGS->config["captcha"] == "recaptcha") {
 			//Load re-captcha library
 			require_once('./libraries/recaptchalib.php');
-			$resp = @recaptcha_check_answer($SETTINGS->config["captcha_config"]["recpatcha_private_key"],
+			$resp = @recaptcha_check_answer($SETTINGS->config["captcha_config"]["recaptcha_private_key"],
 											$remote_address, 
 											$captcha_data['recaptcha_challenge_field'], 
 											$captcha_data['recaptcha_response_field']

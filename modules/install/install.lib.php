@@ -101,7 +101,7 @@ $buffer = <<<EOF
 		//Simple Captcha Session Name
 		"simple_captcha_session_name" => "{$settings['captcha_config']['simple_captcha_session_name']}",
 		// if you're using reCAPTCHA, enter your private and public keys here:
-		"recpatcha_private_key" => "{$settings['captcha_config']['recpatcha_private_key']}",
+		"recaptcha_private_key" => "{$settings['captcha_config']['recaptcha_private_key']}",
 		"recpatcha_public_key" => "{$settings['captcha_config']['recpatcha_public_key']}",
 		// if you're using Solve MEDIA, enter your private, challenge, and hash keys here:
 		"solvemedia_private_key" => "{$settings['captcha_config']['solvemedia_private_key']}",
@@ -137,7 +137,7 @@ if (!file_put_contents($file, $buffer)){throw new Exception("Could not wrtite co
 $settings['captcha_config']['solvemedia_private_key'] = $settings['captcha_config']['solvemedia_private_key'] == 'PRIVATE_KEY_HERE' ? '' : $settings['captcha_config']['solvemedia_private_key'];
 $settings['captcha_config']['solvemedia_challenge_key'] = $settings['captcha_config']['solvemedia_challenge_key'] == 'CHALLENGE_KEY_HERE' ? '' : $settings['captcha_config']['solvemedia_challenge_key'];
 $settings['captcha_config']['solvemedia_hash_key'] = $settings['captcha_config']['solvemedia_hash_key'] == 'HASH_KEY_HERE' ? '' : $settings['captcha_config']['solvemedia_hash_key'];
-$settings['captcha_config']['recpatcha_private_key'] = $settings['captcha_config']['recpatcha_private_key'] == 'PRIVATE_KEY_HERE' ? '' : $settings['captcha_config']['recpatcha_private_key'];
+$settings['captcha_config']['recaptcha_private_key'] = $settings['captcha_config']['recaptcha_private_key'] == 'PRIVATE_KEY_HERE' ? '' : $settings['captcha_config']['recaptcha_private_key'];
 $settings['captcha_config']['recpatcha_public_key'] = $settings['captcha_config']['recpatcha_public_key'] == 'PUBLIC_KEY_HERE' ? '' : $settings['captcha_config']['recpatcha_public_key'];
 
 //Ensure we have the required settings
@@ -150,7 +150,7 @@ if(
 	) ||
 	//re-CAPTCHA
 	($settings['captcha'] == 'recaptcha' && 
-	(empty($settings['captcha_config']['recpatcha_private_key']) ||
+	(empty($settings['captcha_config']['recaptcha_private_key']) ||
 	empty($settings['captcha_config']['recpatcha_public_key']))
 	) ||
 	//Simple Captcha
@@ -352,7 +352,7 @@ function install_process_post_request($step, &$vars = array()){
 					'use_captcha' => $_POST['captcha_type'], 
 					'captcha_config' => array(
 						'simple_captcha_session_name' => $_POST['simple_captcha_session_name'], 
-						'recpatcha_private_key' => $_POST['recpatcha_private_key'], 
+						'recaptcha_private_key' => $_POST['recaptcha_private_key'], 
 						'recpatcha_public_key' => $_POST['recpatcha_public_key'],
 						'solvemedia_private_key' => $_POST['solvemedia_private_key'],
 						'solvemedia_challenge_key' => $_POST['solvemedia_challenge_key'],
@@ -471,7 +471,7 @@ function install_get_faucet_config(){
 	/*
 	$captcha_config_default = array(
 		'simple_captcha_session_name' => 'multifaucet',
-		'recpatcha_private_key' => 'PRIVATE_KEY_HERE', 
+		'recaptcha_private_key' => 'PRIVATE_KEY_HERE', 
 		'recpatcha_public_key' => 'PUBLIC_KEY_HERE',
 		'solvemedia_private_key' => 'PRIVATE_KEY_HERE',
 		'solvemedia_challenge_key' => 'CHALLENGE_KEY_HERE',
@@ -487,7 +487,7 @@ function install_get_faucet_config(){
 	$faucet['CAPTCHA']['captcha_config'] = isset($config['captcha_config']) ? $config['captcha_config'] : array();
 
 	$faucet['CAPTCHA']['captcha_config']['simple_captcha_session_name'] = isset($config['captcha_config']['simple_captcha_session_name']) ? $config['captcha_config']['simple_captcha_session_name'] : 'multifaucet';
-	$faucet['CAPTCHA']['captcha_config']['recpatcha_private_key'] = isset($config['captcha_config']['recpatcha_private_key']) ? $config['captcha_config']['recpatcha_private_key'] : 'PRIVATE_KEY_HERE';
+	$faucet['CAPTCHA']['captcha_config']['recaptcha_private_key'] = isset($config['captcha_config']['recaptcha_private_key']) ? $config['captcha_config']['recaptcha_private_key'] : 'PRIVATE_KEY_HERE';
 	$faucet['CAPTCHA']['captcha_config']['recpatcha_public_key'] = isset($config['captcha_config']['recpatcha_public_key']) ? $config['captcha_config']['recpatcha_public_key'] : 'PUBLIC_KEY_HERE';
 	$faucet['CAPTCHA']['captcha_config']['solvemedia_private_key'] = isset($config['captcha_config']['solvemedia_private_key']) ? $config['captcha_config']['solvemedia_private_key'] : 'PRIVATE_KEY_HERE';
 	$faucet['CAPTCHA']['captcha_config']['solvemedia_challenge_key'] = isset($config['captcha_config']['solvemedia_challenge_key']) ? $config['captcha_config']['solvemedia_challenge_key'] : 'CHALLENGE_KEY_HERE';

@@ -23,8 +23,8 @@ $config = array(
                 //Simple Captcha Session Name
                 "simple_captcha_session_name" => "multifaucet",
                 // if you're using reCAPTCHA, enter your private and public keys here:
-                "recpatcha_private_key" => "PRIVATE_KEY_HERE",
-                "recpatcha_public_key" => "PUBLIC_KEY_HERE",
+                "recaptcha_private_key" => "PRIVATE_KEY_HERE",
+                "recaptcha_public_key" => "PUBLIC_KEY_HERE",
                 // if you're using Solve MEDIA, enter your private, challenge, and hash keys here:
                 "solvemedia_private_key" => "PRIVATE_KEY_HERE",
                 "solvemedia_challenge_key" => "CHALLENGE_KEY_HERE",

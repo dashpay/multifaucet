@@ -41,8 +41,8 @@
 								
 								<p class='odd'>If using Re-Cpatcha, setup the values below</p>
 								<p class='even'>
-								<label for="recpatcha_private_key">Private Key:</label>
-								<input type='text' size='37' value='<?php echo $FAUCET['CAPTCHA']['captcha_config']['recpatcha_private_key'] ?: ''; ?>' name='recpatcha_private_key' />
+								<label for="recaptcha_private_key">Private Key:</label>
+								<input type='text' size='37' value='<?php echo $FAUCET['CAPTCHA']['captcha_config']['recaptcha_private_key'] ?: ''; ?>' name='recaptcha_private_key' />
 								</p>
 								
 								<p class='odd'>
