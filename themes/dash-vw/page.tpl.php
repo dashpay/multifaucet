@@ -40,4 +40,12 @@
 		<img src="<?php echo theme_dir(); ?>images/dash-d.png" class="droplet" alt=""/>
 	</div>
 </body>
+<script>
+  const onloadCallback = function() {
+    console.log("reCAPTCHA has loaded!");
+    grecaptcha.reset();
+  };
+</script>
+<script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback"></script>
+
 </html>

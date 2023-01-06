@@ -45,7 +45,10 @@ function faucet_get_captcha($SETTINGS){
 			$captcha_config['recpatcha_public_key'] = $SETTINGS->config["captcha_config"]["recpatcha_public_key"];
 			return recaptcha_get_html($captcha_config["recpatcha_public_key"]);
 		}
-	}
+		elseif($SETTINGS->get("captcha") == "recaptcha_v2") {
+			$publickey = $SETTINGS->config["captcha_config"]["recaptcha_v2_public_key"];
+			return '<div class="g-recaptcha" data-sitekey="'. $publickey .'"></div>';
+		}	}
 	else{
 		return ''; //Empty
 	}
