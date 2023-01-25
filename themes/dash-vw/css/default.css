@@ -10,7 +10,7 @@ html,body{
 }
 
 body{
-	background: url(../images/1471045076.jpg) no-repeat center center fixed;
+	background: url(../images/91655.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -19,6 +19,52 @@ body{
 	font-size: 62.5%;
 	font-family: 'Verdana','Arial',sans-serif;
 	overflow: hidden;
+}
+#g-recaptcha-response {
+    display: block !important;
+    position: absolute;
+    margin: -78px 0 0 0 !important;
+    width: 302px !important;
+    height: 76px !important;
+    z-index: -999999;
+    opacity: 0;
+}
+.neontext {
+    color: #fff;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 2em 0 0.2em 0.5em;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #008de4, 0 0 82px #008de4, 0 0 92px #008de4, 0 0 102px #008de4, 0 0 151px #008de4;
+}
+
+h1 {
+  font-size: 6.2rem;
+  animation: pulsate 1.5s infinite alternate; 
+}
+
+@keyframes pulsate {
+	100% {
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #008de4,
+      0 0 80px #008de4,
+      0 0 90px #008de4,
+      0 0 100px #008de4,
+      0 0 150px #008de4;
+  } 
+  0% {
+    text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 6px #fff,
+    0 0 10px #008de4,
+    0 0 45px #008de4,
+    0 0 55px #008de4,
+    0 0 70px #008de4,
+    0 0 80px #008de4;
+}
 }
 
 div#wrapper{
@@ -36,8 +82,8 @@ div#stats{
 }
 
 div.container{
-	/* background-color: #fff; */
-	background-color: rgba(255, 255, 255, 0.5);
+	color: #fff;
+	background-color: #012060a6;
 	border-radius: 5px;
 	width: 50%;
 	padding: 1em;
@@ -45,19 +91,108 @@ div.container{
 	word-wrap: break-word;
 }
 
+form {
+    max-width: 350px;
+    margin: auto;
+}
+input#cryptocoin_address::placeholder {
+    color: white;
+}
 div.container input{
 	width: 100%;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-	display: block;
-	font-size: 1.5em;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: inset 0px 1px 2px #ddd;
-	padding: .5em .7em;
-	margin-bottom: .5em;
+    display: block;
+    font-size: 1.5em;
+    color: white;
+    background-color: transparent;
+    border-bottom: 2px solid #fff;
+    padding: 0.5em 0.7em;
+    margin-bottom: 0.5em;
+}
+
+.container.main-cont {
+    padding: 5rem 1.2rem;
+    background-image: url(../images/arcade-img.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+div#captcha {
+    margin: 0 0 0 1px !important;
+}
+.rc-anchor-light.rc-anchor-normal {
+    border-bottom: 1px solid #d3d3d3 !important;
+    border-radius: 0 !important;
+}
+.rc-anchor-light {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+/* button animation */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 90deg;
+  inherits: true;
+}
+
+@property --gradX {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: true;
+}
+
+@property --gradY {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: true;
+}
+:root {
+	--d: 2500ms;
+	--angle: 90deg;
+	--gradX: 100%;
+	--gradY: 50%;
+	--c1: rgba(168, 239, 255, 1);
+	--c2: rgba(168, 239, 255, 0.1);
+}
+.standard_button{
+	font-size: 2vw;
+	margin: 10px 0;
+	border: 2px solid;
+	padding: 1.5vw !important;
+	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+	animation: borderRotate var(--d) linear infinite forwards;
+}
+
+@keyframes borderRotate {
+	100% {
+		--angle: 420deg;
+	}
+}
+
+@keyframes borderRadial {
+	20% {
+		--gradX: 100%;
+		--gradY: 50%;
+	}
+	40% {
+		--gradX: 100%;
+		--gradY: 100%;
+	}
+	60% {
+		--gradX: 50%;
+		--gradY: 100%;
+	}
+	80% {
+		--gradX: 0%;
+		--gradY: 50%;
+	}
+	100% {
+		--gradX: 50%;
+		--gradY: 0%;
+	}
 }
 
 div#site-setup.installer,
@@ -89,19 +224,17 @@ div.container input:last-child{
 }
 
 div.container input[type="submit"]{
-	background-color: #3aa3e3;
-	box-shadow: inset 0px -1px 4px #0b0f3b;
-	border: 1px solid #012060;
-	font-weight: bold;
-	/*color: #fff;
-	text-shadow: 0px 0px 2px #000;*/
+	font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
-div.container input[type="submit"]:hover{
-	background-color: #008de4;
-	box-shadow: inset 0px -1px 4px #0b0f3b;
-	border: 1px solid #012060;
-	font-weight: bold;
+input#cryptocoin_submit:hover {
+    background: #008de4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #008de4, 0 0 25px #008de4, 0 0 50px #008de4, 0 0 100px #008de4;
 }
 
 div.container input[type="submit"]:active{
@@ -144,7 +277,6 @@ p.error{
 p.big{
 	font-size: 1.2em;
 	font-weight: bold;
-	color: #000;
 }
 
 .installer p{
@@ -176,7 +308,7 @@ img.droplet{
 	position: absolute;
 	right: 0px;
 	top: 0%;
-	max-width: 300px;
+	max-width: 150px;
 	width: 30%;
 	margin-top: -40%;
 	-webkit-animation: much_coins linear 6s infinite;

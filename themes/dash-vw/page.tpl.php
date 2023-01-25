@@ -13,7 +13,7 @@
 <body>
 	<div id="wrapper">
 		<h1><?php print($title); ?></h1>
-		<div class="container">
+		<div class="container main-cont">
 			<?php print($content); ?>
 		</div>
 		<?php if(get_setting('donation_address')) { ?>
@@ -39,5 +39,27 @@
 		<img src="<?php echo theme_dir(); ?>images/dash-d.png" class="droplet" alt=""/>
 		<img src="<?php echo theme_dir(); ?>images/dash-d.png" class="droplet" alt=""/>
 	</div>
+	<script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback"></script>
+<script>
+	var recaptcha_response = '';
+function submitUserForm() {
+    if(recaptcha_response.length == 0) {
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+        return false;
+    }
+    return true;
+}
+ 
+function verifyCaptcha(token) {
+    recaptcha_response = token;
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+</script>
+<script>
+  const onloadCallback = function() {
+    console.log("reCAPTCHA has loaded!");
+    grecaptcha.reset();
+  };
+</script>
 </body>
 </html>
