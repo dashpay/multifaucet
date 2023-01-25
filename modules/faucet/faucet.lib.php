@@ -47,8 +47,9 @@ function faucet_get_captcha($SETTINGS){
 		}
 		elseif($SETTINGS->get("captcha") == "recaptcha_v2") {
 			$publickey = $SETTINGS->config["captcha_config"]["recaptcha_v2_public_key"];
-			return '<div class="g-recaptcha" data-sitekey="'. $publickey .'"></div>';
-		}	}
+			return '<div class="g-recaptcha" data-callback="verifyCaptcha" data-sitekey="'. $publickey .'"></div>';
+		}	
+	}
 	else{
 		return ''; //Empty
 	}

@@ -39,13 +39,27 @@
 		<img src="<?php echo theme_dir(); ?>images/dash-d.png" class="droplet" alt=""/>
 		<img src="<?php echo theme_dir(); ?>images/dash-d.png" class="droplet" alt=""/>
 	</div>
-</body>
+	<script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback"></script>
+<script>
+	var recaptcha_response = '';
+function submitUserForm() {
+    if(recaptcha_response.length == 0) {
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+        return false;
+    }
+    return true;
+}
+ 
+function verifyCaptcha(token) {
+    recaptcha_response = token;
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+</script>
 <script>
   const onloadCallback = function() {
     console.log("reCAPTCHA has loaded!");
     grecaptcha.reset();
   };
 </script>
-<script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback"></script>
-
+</body>
 </html>
