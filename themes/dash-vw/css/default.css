@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600&display=swap');
+
 *{
 	border: none;
 	margin: 0;
@@ -17,7 +19,7 @@ body{
 	background-size: cover;
 
 	font-size: 62.5%;
-	font-family: 'Verdana','Arial',sans-serif;
+	font-family: 'Chakra Petch', sans-serif;
 	overflow: hidden;
 }
 #g-recaptcha-response {
@@ -29,12 +31,27 @@ body{
     z-index: -999999;
     opacity: 0;
 }
+div#g-recaptcha-error {
+    color: #f9f9f9;
+    padding: 10px 12px 0;
+    animation: pulsate 1.5s infinite alternate;
+}
 .neontext {
     color: #fff;
     font-weight: bold;
     font-size: 2em;
     padding: 2em 0 0.2em 0.5em;
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #008de4, 0 0 82px #008de4, 0 0 92px #008de4, 0 0 102px #008de4, 0 0 151px #008de4;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Chakra Petch', sans-serif;
+	font-weight: 600;
+}
+
+p,a,span,input{
+	font-family: 'Chakra Petch', sans-serif;
+	font-weight: 300;
 }
 
 h1 {
@@ -85,7 +102,7 @@ div.container{
 	color: #fff;
 	background-color: #012060a6;
 	border-radius: 5px;
-	width: 50%;
+	width: 52%;
 	padding: 1em;
 	margin: 1em;
 	word-wrap: break-word;
@@ -95,7 +112,7 @@ form {
     max-width: 350px;
     margin: auto;
 }
-input#cryptocoin_address::placeholder {
+input#cryptocoin_address::placeholder, input#promo_code::placeholder {
     color: white;
 }
 div.container input{
@@ -113,12 +130,18 @@ div.container input{
 }
 
 .container.main-cont {
-    padding: 5rem 1.2rem;
+    padding: 3rem 1.2rem 4rem;
     background-image: url(../images/arcade-img.jpg);
-    background-size: contain;
+    background-color: transparent;
+    background-size: cover;
     background-repeat: no-repeat;
+    min-height: 272px;
 }
-
+.container.main-cont p {
+	padding: 5% 8% 0;
+    font-size: 20px;
+    font-weight: 500;
+}
 div#captcha {
     margin: 0 0 0 1px !important;
 }
@@ -158,10 +181,9 @@ div#captcha {
 	--c2: rgba(168, 239, 255, 0.1);
 }
 .standard_button{
-	font-size: 2vw;
 	margin: 10px 0;
 	border: 2px solid;
-	padding: 1.5vw !important;
+	padding: 1.1vw !important;
 	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
 	animation: borderRotate var(--d) linear infinite forwards;
 }
@@ -224,7 +246,7 @@ div.container input:last-child{
 }
 
 div.container input[type="submit"]{
-	font-size: 16px;
+	font-size: 21px;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -434,9 +456,27 @@ img.droplet:nth-of-type(4){
 		-webkit-transform: rotate(-30deg);
 	}
 }
+@media all and (max-width: 1000px)
+{
+	.standard_button {
+		padding: 1.5vw !important;
+    }
+}
+@media all and (max-width:700px)
+{
+	.container.main-cont {
+    padding: 2rem 1.2rem 2rem;
+    background-image: none;
+    background-color: #012060a6;
+    min-height: auto;
+    }
+    .standard_button {
+    padding: 2.5vw !important;
+    }
+}
 
-@media all and (max-width: 450px)
-	{
+@media all and (max-width: 600px)
+{
 	body{
 		overflow: auto;
 	}
@@ -447,19 +487,14 @@ img.droplet:nth-of-type(4){
 		}
 
 	h1{
-		padding-top: .2em;
+		padding-top: 1em;
 	}
 
 	img.droplet{
-		width: 100%;
-		display: block;
-		-webkit-animation: none;
-		animation: none;
-		position: static;
-		margin: 2em auto 0 auto;
-		}
-
-	img.droplet:nth-of-type(2),img.droplet:nth-of-type(3){
 		display: none;
 		}
+
+	.standard_button {
+		padding: 4.5vw !important;
 	}
+}
