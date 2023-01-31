@@ -44,7 +44,7 @@
 	var recaptcha_response = '';
 function submitUserForm() {
     if(recaptcha_response.length == 0) {
-        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+        document.getElementById('g-recaptcha-error').innerHTML = '<span>This field is required.</span>';
         return false;
     }
     return true;
