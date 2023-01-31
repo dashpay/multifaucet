@@ -2,3 +2,4 @@ Dockerfile
 db
 config
 docker-compose.yml
+.git
