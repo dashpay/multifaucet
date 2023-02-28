@@ -33,6 +33,9 @@
 			<p><?php print translate('faucet_balance'); ?>: <?php print($stats['balance']); ?></p>
 			<p><?php print translate('average_payout'); ?>: <?php print($stats['average_payout']); ?></p>
 			<p><?php print($stats['number_of_payouts']); ?> <?php print translate('payouts'); ?></p>
+			<br />
+			<p><?php print translate('core_version'); ?>: <?php print($stats['core_version']); ?></p>
+			<p><?php print translate('block_height'); ?>: <?php print($stats['block_height']); ?></p>
 		</div>
 		<?php } ?>
 		<img src="<?php echo theme_dir(); ?>images/dash-d.png" class="droplet" alt=""/>
