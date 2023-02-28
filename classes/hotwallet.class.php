@@ -16,6 +16,16 @@ class HotWallet implements Wallet {
 		$balance = $this->rpc_call("getbalance");
 		return $balance;
 	}
+	public function getblockcount(){
+		$block_height = 0;
+		$block_height = $this->rpc_call("getblockcount");
+		return $block_height;
+	}
+	public function getnetworkinfo(){
+		$network_info = 0;
+		$network_info = $this->rpc_call("getnetworkinfo");
+		return $network_info;
+	}
 	public function sendtoaddress($address, $amount){
 		return $this->rpc_call("sendtoaddress",array((string)$address, (float)$amount));
 	}

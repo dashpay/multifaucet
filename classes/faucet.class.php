@@ -63,6 +63,8 @@ class Faucet {
 		// Check database and Balance
 		// TODO: Tell the diffrence between a DB and WALLET connection error
 		if (!$this->DB->connect_error){
+			$this->refresh_block_height();
+			$this->refresh_network_info();
 			if ($this->refresh_balance()) {
 				if ($this->balance >= $this->SETTINGS->config["payout_threshold"]) {
 					$this->status = SF_STATUS_OPERATIONAL;
@@ -260,6 +262,28 @@ class Faucet {
 		}
 	}
 
+	public function refresh_block_height(){
+		try {
+			$this->block_height = $this->PAYMENT_GATEWAY->getblockcount();
+			return true;
+		}
+		catch(Exception $e){
+			$this->status = SF_STATUS_RPC_CONNECTION_FAILED;
+			return false;
+		}
+	}
+
+	public function refresh_network_info(){
+		try {
+			$this->network_info = $this->PAYMENT_GATEWAY->getnetworkinfo();
+			return true;
+		}
+		catch(Exception $e){
+			$this->status = SF_STATUS_RPC_CONNECTION_FAILED;
+			return false;
+		}
+	}
+
 	protected function load_stats(){
 		$this->STATS['average_payout'] = number_format($this->payout_aggregate("AVG"), $this->precision);
 		$this->STATS['smallest_payout'] = number_format($this->payout_aggregate("MIN"), $this->precision);
@@ -277,6 +301,9 @@ class Faucet {
 		$this->STATS['minimum_payout'] = number_format($this->SETTINGS->config['minimum_payout'], $this->precision);
 		$this->STATS['maximum_payout'] = number_format($this->SETTINGS->config['maximum_payout'], $this->precision);
 		$this->STATS['payout_threshold'] = number_format($this->SETTINGS->config['payout_threshold'], $this->precision);
+
+		$this->STATS['core_version'] = $this->network_info['buildversion'];
+		$this->STATS['block_height'] = $this->block_height;
 	}
 
 	public function get_stats($refresh = false){

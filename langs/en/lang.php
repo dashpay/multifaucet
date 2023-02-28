@@ -25,6 +25,8 @@ $LANGUAGE['submit_button_text'] = "Get coins";
 $LANGUAGE['payouts'] = "payouts";
 $LANGUAGE['faucet_balance'] = "Faucet balance";
 $LANGUAGE['average_payout'] = "Average payout";
+$LANGUAGE['core_version'] = "Dash Core version";
+$LANGUAGE['block_height'] = "Current block height";
 $LANGUAGE['support_sponsor'] = "Please support this faucet and visit our sponsor";
 
 $LANGUAGE['price'] = "Price";
